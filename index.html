@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coraline Mania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
             --accent-color: #8e44ad;
-            --text-color: #ecf0f1;
-            --button-color: #e74c3c;
+            --text-color: #e1e1e1;
+            --button-color: #e94560;
         }
         
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--primary-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -23,21 +24,24 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
 
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 40px 0;
             background-color: var(--secondary-color);
             border-bottom: 3px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 4rem;
             color: var(--accent-color);
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -54,13 +58,14 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 40px;
+            position: relative;
         }
 
         .movie-poster {
             flex: 1;
-            max-width: 300px;
-            margin-right: 20px;
+            max-width: 400px;
+            margin-right: 40px;
         }
 
         .movie-poster img {
@@ -71,54 +76,38 @@
 
         .movie-description {
             flex: 2;
+            position: relative;
         }
 
         .cta-button {
             display: inline-block;
             background-color: var(--button-color);
             color: var(--text-color);
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             font-weight: bold;
             border: none;
             cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px;
         }
 
         .cta-button:hover {
-            background-color: #c0392b;
+            background-color: #d63851;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        .author-note {
+        .author-note, .fun-fact, #character-quiz {
             background-color: var(--secondary-color);
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 40px;
             border-left: 5px solid var(--accent-color);
-        }
-
-        .interactive-section {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        #character-quiz {
-            background-color: var(--secondary-color);
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid var(--accent-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: var(--secondary-color);
-            margin-top: 20px;
-            border-top: 3px solid var(--accent-color);
+            position: relative;
         }
 
         .emoji {
@@ -126,13 +115,24 @@
             margin: 0 5px;
         }
 
-        .fun-fact {
-            background-color: var(--secondary-color);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: center;
-            border: 2px dashed var(--accent-color);
+        .decoration {
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            color: var(--accent-color);
+            z-index: 0;
+        }
+
+        .decoration-left {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .decoration-right {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
         }
 
         .quiz-question {
@@ -144,21 +144,23 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .quiz-option {
             background-color: var(--accent-color);
             color: var(--text-color);
-            padding: 10px 15px;
+            padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
         }
 
         .quiz-option:hover {
             background-color: #9b59b6;
+            transform: translateY(-2px);
         }
 
         #quiz-result {
@@ -166,9 +168,21 @@
             margin-top: 20px;
             font-weight: bold;
             font-size: 1.2em;
+            padding: 20px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            text-align: center;
         }
 
-        @media (max-width: 600px) {
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            margin-top: 40px;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
             .movie-info {
                 flex-direction: column;
             }
@@ -176,6 +190,11 @@
             .movie-poster {
                 margin-right: 0;
                 margin-bottom: 20px;
+                max-width: 100%;
+            }
+
+            .decoration {
+                font-size: 4rem;
             }
 
             .quiz-options {
@@ -193,16 +212,19 @@
 
         <main>
             <section class="movie-info">
+                <div class="decoration decoration-left">✧</div>
                 <div class="movie-poster">
                     <img src="https://gonewiththetwins.com/wp-content/uploads/2009/02/coraline_tall.jpg" alt="Coraline movie poster">
                 </div>
                 <div class="movie-description">
+                    <h3>A Thrilling Adventure</h3>
                     <p>
                         Wandering her rambling old house in her boring new town, Coraline discovers a hidden door to a fantasy
                         version of her life. In order to stay in the fantasy, she must make a <strong>frighteningly real sacrifice</strong>.
                     </p>
                     <a href="https://www.netflix.com/jp-en/title/70105599" class="cta-button" target="_blank">Watch Now <span class="emoji">🎬</span></a>
                 </div>
+                <div class="decoration decoration-right">✧</div>
             </section>
 
             <section class="author-note">
